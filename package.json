@@ -1,0 +1,21 @@
+{
+  "name": "easychild_bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./src/index.js",
+    "dev": "nodemon ./src/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^1.17.3"
+  },
+  "dependencies": {
+    "date-and-time": "^0.6.2",
+    "mongoose": "^5.0.13",
+    "node-telegram-bot-api": "^0.30.0",
+    "sprintf-js": "^1.1.1"
+  }
+}
