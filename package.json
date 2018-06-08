@@ -1,18 +1,22 @@
 {
   "name": "easychild_bot",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "",
   "main": "index.js",
   "scripts": {
     "start": "node ./src/index.js",
-    "dev": "nodemon ./src/index.js"
+    "dev": "nodemon ./src/index.js",
+    "switch_to_dev": "export $(cat .env | xargs) && wget --spider https://api.telegram.org/bot$TOKEN/setWebhook?url= --delete-after && node index.js"
   },
-  "author": "",
+  "author": "Yudin Pavel",
   "license": "ISC",
   "devDependencies": {
     "nodemon": "^1.17.3"
   },
   "dependencies": {
+    "body-parser": "^1.15.0",
+    "dotenv": "^4.0.0",
+    "express": "^4.13.4",
     "date-and-time": "^0.6.2",
     "mongoose": "^5.0.13",
     "node-telegram-bot-api": "^0.30.0",

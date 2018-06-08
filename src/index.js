@@ -4,13 +4,21 @@ const TelegramBot = require('node-telegram-bot-api')
 const mongoose = require('mongoose')
 const fs = require('fs')
 const dateNtime = require('date-and-time')
-const config = require('./config.js')
+//const config = require('./config.js')
 const data = require('./data.js')
 const lib = require('./lib.js')
+const web = require('./web.js')
+require("dotenv").config();
 
-const bot = new TelegramBot(config.TOKEN, {
-    polling: true
-})
+const bot;
+
+if(process.env.NODE_ENV === 'production') {
+  bot = new TelegramBot(process.env.TOKEN);
+  bot.setWebHook(process.env.HEROKU_URL + bot.token);
+}
+else {
+  bot = new TelegramBot(process.env.TOKEN, { polling: true });
+}
 
 bot.onText(/.+/, (msg, [source, match]) => {
     let logMess = `date: ${dateNtime.format(new Date(msg.date*1000), 'DD.MM.YYYY HH:mm:ss')}, first_name: ${msg.from.first_name}, last_name: ${msg.from.last_name}, username: ${msg.from.username}, chatId: ${msg.chat.id}, userId: ${msg.from.id}, text: '${msg.text}'\n`
@@ -94,7 +102,14 @@ bot.onText(/.+/, (msg, [source, match]) => {
 
 bot.on('polling_error', error => {
     //fs.appendFileSync('easychild_bot.log', error)
-    console.err(error)
+    console.err(error.code)
 })
+
+bot.on('webhook_error', error => {
+    //fs.appendFileSync('easychild_bot.log', error)
+    console.err(error.code)
+})
+
+web(bot)
 
 
