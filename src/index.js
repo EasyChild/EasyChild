@@ -13,7 +13,9 @@ const bot = new TelegramBot(config.TOKEN, {
 })
 
 bot.onText(/.+/, (msg, [source, match]) => {
-    fs.appendFileSync('easychild_bot.log', `date: ${dateNtime.format(new Date(msg.date*1000), 'DD.MM.YYYY HH:mm:ss')}, first_name: ${msg.from.first_name}, last_name: ${msg.from.last_name}, username: ${msg.from.username}, chatId: ${msg.chat.id}, userId: ${msg.from.id}, text: '${msg.text}'\n`)
+    let logMess = `date: ${dateNtime.format(new Date(msg.date*1000), 'DD.MM.YYYY HH:mm:ss')}, first_name: ${msg.from.first_name}, last_name: ${msg.from.last_name}, username: ${msg.from.username}, chatId: ${msg.chat.id}, userId: ${msg.from.id}, text: '${msg.text}'\n`
+    //fs.appendFileSync('easychild_bot.log', logMess)
+    console.log(logMess)
     source = source.toUpperCase()
     switch(source) {
         case '/START':
@@ -91,7 +93,8 @@ bot.onText(/.+/, (msg, [source, match]) => {
 })
 
 bot.on('polling_error', error => {
-    fs.appendFileSync('easychild_bot.log', error)
+    //fs.appendFileSync('easychild_bot.log', error)
+    console.err(error)
 })
 
 
