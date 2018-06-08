@@ -10,7 +10,7 @@ const lib = require('./lib.js')
 const web = require('./web.js')
 require("dotenv").config();
 
-const bot;
+let bot;
 
 if(process.env.NODE_ENV === 'production') {
   bot = new TelegramBot(process.env.TOKEN);
