@@ -2,7 +2,6 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const packageInfo = require('../package.json');
 
-
 const app = express();
 app.use(bodyParser.json());
 
@@ -18,7 +17,6 @@ var server = app.listen(process.env.PORT, "0.0.0.0", () => {
 
 module.exports = (bot) => {
   app.post('/' + bot.token, (req, res) => {
-      console.log(1)
     bot.processUpdate(req.body);
     res.sendStatus(200);
   });
