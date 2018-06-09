@@ -11,8 +11,6 @@ const web = require('./web.js')
 require("dotenv").config();
 
 let bot;
-console.log(process.env.TOKEN)
-console.log(process.env.NODE_ENV)
 if(process.env.NODE_ENV === 'production') {
   bot = new TelegramBot(process.env.TOKEN);
   bot.setWebHook(process.env.HEROKU_URL + bot.token);

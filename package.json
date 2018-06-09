@@ -1,6 +1,6 @@
 {
   "name": "easychild_bot",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -9,7 +9,7 @@
     "switch_to_dev": "export $(cat .env | xargs) && wget --spider https://api.telegram.org/bot$TOKEN/setWebhook?url= --delete-after && node index.js"
   },
   "author": "Yudin Pavel",
-  "license": "ISC",
+  "license": "Apache-2.0",
   "devDependencies": {
     "nodemon": "^1.17.3"
   },
