@@ -101,12 +101,12 @@ bot.onText(/.+/, (msg, [source, match]) => {
 
 bot.on('polling_error', error => {
     //fs.appendFileSync('easychild_bot.log', error)
-    console.err(error.code)
+    console.error(error.code)
 })
 
 bot.on('webhook_error', error => {
     //fs.appendFileSync('easychild_bot.log', error)
-    console.err(error.code)
+    console.error(error.code)
 })
 
 web(bot)
